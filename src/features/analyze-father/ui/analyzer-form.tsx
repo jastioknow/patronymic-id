@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { parsePatronymic, ParsingResult } from "@/shared/lib/parse-patronymic";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/ui/card";
 import { Loader2, Terminal } from "lucide-react";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const formSchema = z.object({
   patronymic: z
@@ -65,37 +65,35 @@ export function AnalyzerForm({ onResult }: AnalyzerFormProps) {
   };
 
   return (
-    <Card className="w-full max-w-md border-slate-800 bg-slate-950 text-slate-100 shadow-2xl">
-      <CardHeader>
-        <CardTitle className="text-xl font-semibold tracking-tight">
-          PatronymicID™ Analyzer
-        </CardTitle>
-        <CardDescription className="text-slate-400">
+    <Card className="w-full max-w-xl border-slate-800 bg-slate-950 text-slate-100 shadow-2xl p-4">
+      <CardHeader className="space-y-2">
+        <CardTitle className="text-2xl font-bold tracking-tight">PatronymicID™ Analyzer</CardTitle>
+        <CardDescription className="text-base text-slate-400">
           Введите отчество для декомпозиции родительской сущности.
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div className="space-y-2">
+      <CardContent className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <div className="space-y-3">
             <Input
               {...register("patronymic")}
-              placeholder="Пример: Александровна / Петрович"
-              className="border-slate-800 bg-slate-900 text-slate-100 placeholder:text-slate-500 focus-visible:ring-slate-700"
+              placeholder="Пример: Андреевич / Александровна"
+              className="h-14 text-lg border-slate-800 bg-slate-900 text-slate-100 placeholder:text-slate-500 focus-visible:ring-slate-700 px-4"
               disabled={loadingStep !== null}
             />
             {errors.patronymic && (
-              <p className="text-xs font-medium text-destructive">{errors.patronymic.message}</p>
+              <p className="text-sm font-semibold text-destructive">{errors.patronymic.message}</p>
             )}
           </div>
 
           <Button
             type="submit"
-            className="w-full bg-slate-100 text-slate-900 hover:bg-slate-200"
+            className="w-full h-14 text-lg font-bold bg-slate-100 text-slate-900 hover:bg-slate-200"
             disabled={loadingStep !== null}
           >
             {loadingStep ? (
               <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <Loader2 className="mr-3 h-5 w-5 animate-spin" />
                 Вычисление генеалогии...
               </>
             ) : (
@@ -105,9 +103,9 @@ export function AnalyzerForm({ onResult }: AnalyzerFormProps) {
         </form>
 
         {logs.length > 0 && (
-          <div className="mt-6 rounded-lg bg-black p-3 font-mono text-[11px] text-emerald-400 border border-slate-900 max-h-40 overflow-y-auto">
-            <div className="flex items-center gap-1.5 mb-2 text-slate-500 border-b border-slate-900 pb-1">
-              <Terminal className="h-3 w-3" />
+          <div className="rounded-lg bg-black p-4 font-mono text-xs text-emerald-400 border border-slate-900 max-h-56 overflow-y-auto space-y-1">
+            <div className="flex items-center gap-2 text-sm text-slate-500 border-b border-slate-900 pb-2 mb-2 font-sans font-semibold">
+              <Terminal className="h-4 w-4" />
               <span>SYSTEM LOGS</span>
             </div>
             {logs.map((log, i) => (
