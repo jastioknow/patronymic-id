@@ -39,15 +39,22 @@ export function parsePatronymic(patronymic: string): ParsingResult {
     const base = clean.slice(0, -4);
     let name = base.charAt(0).toUpperCase() + base.slice(1);
 
-    if (clean.endsWith("евич") && !name.endsWith("й") && !name.endsWith("ь")) {
+    if (clean.endsWith("евич") && !name.endsWith("й")) {
       if (["игор", "лазар"].includes(base)) {
         name += "ь";
       } else if (clean.endsWith("еевич")) {
         name += "й";
+      } else if (name.endsWith("енг") || name.endsWith("евгень")) {
+        name = name.slice(0, -1) + "й";
       } else if (name.endsWith("е")) {
         name = name.slice(0, -1) + "й";
       }
     }
+
+    if (name === "Евгень") name = "Евгений";
+    if (name === "Валерь") name = "Валерий";
+    if (name === "Арсен") name = "Арсений";
+
     return { fatherName: name, gender: "male", confidence: 0.95 };
   }
 
@@ -55,7 +62,7 @@ export function parsePatronymic(patronymic: string): ParsingResult {
     const base = clean.slice(0, -4);
     let name = base.charAt(0).toUpperCase() + base.slice(1);
 
-    if (clean.endsWith("евна") && !name.endsWith("й") && !name.endsWith("ь")) {
+    if (clean.endsWith("евна") && !name.endsWith("й")) {
       if (["игор", "лазар"].includes(base)) {
         name += "ь";
       } else if (clean.endsWith("еевна")) {
@@ -64,6 +71,11 @@ export function parsePatronymic(patronymic: string): ParsingResult {
         name = name.slice(0, -1) + "й";
       }
     }
+
+    if (name === "Евгень") name = "Евгений";
+    if (name === "Валерь") name = "Валерий";
+    if (name === "Арсен") name = "Арсений";
+
     return { fatherName: name, gender: "female", confidence: 0.95 };
   }
 

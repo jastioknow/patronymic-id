@@ -34,5 +34,11 @@ jobs:
       - name: Run Enterprise Unit Tests
         run: pnpm test:unit
 
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps
+
       - name: Execute Production Compilation
         run: pnpm build
+
+      - name: Run End-to-End Tests
+        run: pnpm exec playwright test

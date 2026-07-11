@@ -1,4 +1,3 @@
-import { describe, it, expect } from "vitest";
 import { parsePatronymic } from "./parse-patronymic";
 
 describe("parsePatronymic enterprise engine", () => {
