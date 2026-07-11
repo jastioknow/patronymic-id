@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PatronymicID™: Enterprise Father Detection Protocol
 
-## Getting Started
+<p align="center">
+  <a href="#-русский-описание-проекта">Русский</a> • 
+  <a href="#-english-project-overview">English</a>
+</p>
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🇷🇺 Русский: Описание проекта
+
+**PatronymicID™** - высоконадежный аналитический движок корпоративного уровня, разработанный для декомпозиции восточнославянских отчеств и обратного инжиниринга имени биологического отца с семантической точностью до 99.8%. Создан для высоконагруженных распределенных симуляций.
+
+### 🚀 Технологический стек
+
+- **Фреймворк:** Next.js 16 (App Router, архитектура Server-Ready)
+- **Дизайн-система:** Tailwind CSS v4 + Shadcn UI (Пресет Nova)
+- **Методология:** Архитектура Feature-Driven Development (FSD)
+- **Качество кода и тесты:** Vitest (Unit-тесты логики) + Playwright (E2E-тесты интерфейса)
+- **Автоматизация (CI/CD):** GitHub Actions пайплайн (проверка типов, линтинг, автотесты)
+- **Менеджер пакетов:** pnpm v10
+
+### 📦 Архитектурная структура (FSD)
+
+```text
+src/
+├── app/         # Инициализация приложения, роутинг и глобальные стили (Слой App)
+├── widgets/     # Самостоятельные комплексные блоки интерфейса (например, FatherCard)
+├── features/    # Слайсы бизнес-логики с пользовательским интерактивом (AnalyzerForm)
+├── entities/    # Бизнес-сущности предметной области (Контекст 'father')
+└── shared/      # Переиспользуемые UI-примитивы, хелперы и базовые алгоритмы
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 📋 Системные требования
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Перед запуском убедитесь, что у вас установлены:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Node.js:** v22.x или выше (LTS)
+- **pnpm:** v10.x
 
-## Learn More
+### 🛠️ Быстрый старт
 
-To learn more about Next.js, take a look at the following resources:
+1. Установите зависимости:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Запустите сервер разработки:
 
-## Deploy on Vercel
+```bash
+pnpm dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Запуск юнит-тестов:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+pnpm test:unit
+```
+
+4. Запуск E2E-тестов:
+
+```bash
+pnpm test:e2e
+```
+
+---
+
+## 🇬🇧 English: Project Overview
+
+An ultra-reliable, high-throughput linguistic parsing engine designed to deconstruct Eastern Slavic patronymics and reverse-engineer biological father identities with up to 99.8% semantic confidence.
+
+### 🚀 Tech Stack
+
+- Next.js 16, Tailwind CSS v4, Shadcn UI (Nova Preset).
+- Full Feature-Driven Development (FSD) layers compliance.
+- Automated CI pipeline (GitHub Actions) with Vitest and Playwright.
+
+---
+
+## 📜 Комплаенс и Регуляции / Compliance
+
+Операции PatronymicID™ полностью соответствуют требованиям ФЗ-152, GDPR и внутренним протоколам синхронизации симуляции реальности. Никакие аналитические данные не сохраняются в стейте - система знала вашего отца еще до того, как вы открыли этот репозиторий.
